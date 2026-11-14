@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cne5u18cu0fp2" path="res://assets/sky.png" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://b4xjltsj55d1x" path="res://assets/metalpipe.png" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bdoud5g4prpec" path="res://scenes/bounceboard.tscn" id="3_iywne"]
+[ext_resource type="Script" uid="uid://dnqhicl1umlpu" path="res://scripts/clouds.gd" id="5_p57ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("2_lnu2h")
@@ -31,6 +32,9 @@ script = ExtResource("1_lbhrr")
 position = Vector2(1, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_yqjtg")
+
+[node name="Clouds" type="Node2D" parent="." unique_id=90864911]
+script = ExtResource("5_p57ef")
 
 [node name="BounceBoards" type="Node2D" parent="." unique_id=1846433825]
 
