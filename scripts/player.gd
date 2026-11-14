@@ -19,7 +19,21 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = false
 	elif horizontal == -1:
 		sprite.flip_h = true
-	velocity.x = horizontal * speed
+	
+	var speedincrease = horizontal * acceleration
+	if not is_on_floor():
+		speedincrease * 0.3
+	if horizontal > 0 and velocity.x < speed:
+		velocity.x += speedincrease
+	if horizontal < 0 and velocity.x > -speed:
+		velocity.x += speedincrease
+	if horizontal == 0 and is_on_floor():
+		velocity.x = 0
+		
+	velocity.x *= 0.95
+	if abs(velocity.x) < 10:
+		velocity.x = 0
+		
 	velocity.y += getgravity(velocity) * delta
 	move_and_slide()
 	
