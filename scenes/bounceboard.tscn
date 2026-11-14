@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bdoud5g4prpec"]
+
+[ext_resource type="Script" uid="uid://d3ijf6pp477qk" path="res://scripts/bounceboard.gd" id="1_cdnpn"]
+[ext_resource type="Texture2D" uid="uid://csw2aclasb1ky" path="res://assets/bounceboard.png" id="1_p8mgr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cumu"]
+size = Vector2(128, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8mgr"]
+atlas = ExtResource("1_p8mgr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4cumu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8mgr")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bounceboard" type="Area2D" unique_id=909851020]
+script = ExtResource("1_cdnpn")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=876386184]
+position = Vector2(0, 25.5)
+shape = SubResource("RectangleShape2D_4cumu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=174865392]
+sprite_frames = SubResource("SpriteFrames_4cumu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
