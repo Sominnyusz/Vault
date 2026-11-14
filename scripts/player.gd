@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var SHOTTY: Node2D = $SHOTTY
 
 @export var speed: int = 250
 @export var acceleration: int = 100
@@ -8,17 +9,16 @@ extends CharacterBody2D
 @export var gravity: int = 2700
 @export var fall_gravity: int = 2200
 @export var max_jumps: int = 2
+@export var horizontal: int
 
 var jumps_made: int = 0
 var player_state: String = "Idle"
 
+
 func _physics_process(delta: float) -> void:
 	
-	var horizontal = Input.get_axis("move_Left", "move_Right")
-	if horizontal == 1:
-		sprite.flip_h = false
-	elif horizontal == -1:
-		sprite.flip_h = true
+	horizontal = Input.get_axis("move_Left", "move_Right")
+	scale.x = SHOTTY.scale.y
 	
 	var speedincrease = horizontal * acceleration
 	if not is_on_floor():
