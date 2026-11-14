@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://chb7pycljfctp"]
+
+[ext_resource type="Texture2D" uid="uid://btmxuseu402ue" path="res://assets/shell.png" id="1_bo4bk"]
+[ext_resource type="Script" uid="uid://nmeju5mliknn" path="res://scripts/shell.gd" id="1_sb42f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cumu"]
+size = Vector2(9, 11)
+
+[node name="Shell" type="Node2D" unique_id=45829732]
+script = ExtResource("1_sb42f")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=999254374]
+rotation = 1.5707964
+texture = ExtResource("1_bo4bk")
+
+[node name="Area" type="Area2D" parent="." unique_id=507021620]
+rotation = 1.5707964
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area" unique_id=856445273]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_4cumu")

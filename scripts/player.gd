@@ -18,7 +18,7 @@ var player_state: String = "Idle"
 func _physics_process(delta: float) -> void:
 	
 	horizontal = Input.get_axis("move_Left", "move_Right")
-	scale.x = SHOTTY.scale.y
+	get_child(1).flip_h = SHOTTY.get_child(0).flip_v
 	
 	var speedincrease = horizontal * acceleration
 	if not is_on_floor():

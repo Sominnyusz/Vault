@@ -3,80 +3,77 @@
 [ext_resource type="Script" uid="uid://deetls1ob1ib2" path="res://scripts/shotty.gd" id="1_t8q2s"]
 [ext_resource type="Texture2D" uid="uid://bn5gib34w06yc" path="res://assets/SHOTTY.png" id="1_uldnk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uldnk"]
-atlas = ExtResource("1_uldnk")
-region = Rect2(0, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8q2s"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdhxl"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(0, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbo80"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(62, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3ybc"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(124, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vowj5"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(186, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_don1p"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(320, 0, 64, 64)
+region = Rect2(248, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u16uq"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(384, 0, 64, 64)
+region = Rect2(310, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghw30"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(448, 0, 64, 64)
+region = Rect2(372, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_df2xe"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(512, 0, 64, 64)
+region = Rect2(434, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_17sat"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(576, 0, 64, 64)
+region = Rect2(496, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tc4qa"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(640, 0, 64, 64)
+region = Rect2(558, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4u5w"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(704, 0, 64, 64)
+region = Rect2(620, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kij7t"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(768, 0, 64, 64)
+region = Rect2(682, 0, 62, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyet7"]
 atlas = ExtResource("1_uldnk")
-region = Rect2(832, 0, 64, 64)
+region = Rect2(744, 0, 62, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6fgr"]
+atlas = ExtResource("1_uldnk")
+region = Rect2(806, 0, 62, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c25gk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uldnk")
+"texture": SubResource("AtlasTexture_t8q2s")
 }],
 "loop": 0,
 "name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t8q2s")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pdhxl")
 }, {
@@ -115,6 +112,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fyet7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6fgr")
 }],
 "loop": 0,
 "name": &"shoot",
@@ -125,7 +125,9 @@ animations = [{
 script = ExtResource("1_t8q2s")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1641471203]
-position = Vector2(20, -13)
+position = Vector2(20, -2)
 sprite_frames = SubResource("SpriteFrames_c25gk")
-animation = &"shoot"
 autoplay = "default"
+
+[node name="ShellPoint" type="Marker2D" parent="." unique_id=2072671263]
+position = Vector2(39, -5)
