@@ -16,5 +16,5 @@ func spawncloud(startx: int):
 	var instance = cloud.instantiate()
 	instance.texture = load("res://assets/cloud" + str(randi_range(1, 2)) + ".png")
 	instance.visible = true
-	instance.global_position = Vector2(startx, randi_range(-100, 260))
+	instance.global_position = Vector2(startx, randi_range(-200, 200))
 	add_child(instance)
