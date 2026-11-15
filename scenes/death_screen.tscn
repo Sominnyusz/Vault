@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ce8tfijo0oapa"]
+
+[ext_resource type="Script" uid="uid://bitkfdjk0el4d" path="res://scripts/death_screen.gd" id="1_dwo6e"]
+[ext_resource type="FontFile" uid="uid://b02aqbl1bnjyc" path="res://assets/PixelOperator8-Bold.ttf" id="1_uyutr"]
+
+[node name="Death Screen" type="Node2D" unique_id=633040785]
+z_index = 4096
+script = ExtResource("1_dwo6e")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=77202219]
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0, 0, 0, 0.4509804)
+
+[node name="enter" type="Label" parent="." unique_id=2132050831]
+offset_left = -356.0
+offset_top = 160.0
+offset_right = 356.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("1_uyutr")
+theme_override_font_sizes/font_size = 32
+text = "Press Enter to play again"
+
+[node name="kills" type="Label" parent="." unique_id=548359834]
+offset_left = -202.0
+offset_right = 202.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_uyutr")
+theme_override_font_sizes/font_size = 32
+text = "Total kills: 22"
+
+[node name="dead" type="Label" parent="." unique_id=1920434185]
+offset_left = -320.0
+offset_top = -177.0
+offset_right = 320.0
+offset_bottom = -97.0
+theme_override_fonts/font = ExtResource("1_uyutr")
+theme_override_font_sizes/font_size = 80
+text = "You Died!"

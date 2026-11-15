@@ -1,22 +1,75 @@
 [gd_scene format=3 uid="uid://bmypotp3y4k8m"]
 
 [ext_resource type="Script" uid="uid://c00jgtopei5k4" path="res://scripts/drone.gd" id="1_1r4ts"]
-[ext_resource type="Texture2D" uid="uid://boba2goijqo2h" path="res://assets/fuckingangry.png" id="1_dil0n"]
 [ext_resource type="Shader" uid="uid://21lhkqm3k4a0" path="res://assets/drone.gdshader" id="1_knnud"]
+[ext_resource type="Texture2D" uid="uid://bfrya5xwg5jqk" path="res://assets/smalldrone.png" id="3_kv6y5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1r4ts"]
+resource_local_to_scene = true
 shader = ExtResource("1_knnud")
 shader_parameter/active = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a8dp"]
+atlas = ExtResource("3_kv6y5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iepbp"]
+atlas = ExtResource("3_kv6y5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hbh1"]
+atlas = ExtResource("3_kv6y5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fge1"]
+atlas = ExtResource("3_kv6y5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jciu7"]
+atlas = ExtResource("3_kv6y5")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4cumu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_dil0n")
+"texture": SubResource("AtlasTexture_7a8dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iepbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hbh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hbh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hbh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hbh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hbh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iepbp")
+}],
+"loop": 0,
+"name": &"attack_launch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fge1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jciu7")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="Animation" id="Animation_1r4ts"]
@@ -75,7 +128,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_umx5g"]
 resource_name = "hurt"
-length = 0.19999999999999998
+length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -97,16 +150,19 @@ _data = {
 &"hurt": SubResource("Animation_umx5g")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cumu"]
-size = Vector2(46, 40)
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8q2s"]
+radius = 24.020824
 
 [node name="SmallDrone" type="Node2D" unique_id=734805235]
 script = ExtResource("1_1r4ts")
+health = 300
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=675624420]
 material = SubResource("ShaderMaterial_1r4ts")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4cumu")
+animation = &"attack_launch"
+autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=1014620310]
 root_node = NodePath("../..")
@@ -115,4 +171,5 @@ libraries/ = SubResource("AnimationLibrary_k1p8w")
 [node name="Area" type="Area2D" parent="." unique_id=936666814 groups=["Enemy"]]
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area" unique_id=1253602462]
-shape = SubResource("RectangleShape2D_4cumu")
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_t8q2s")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c57tt5hx68qfl"]
+
+[ext_resource type="Texture2D" uid="uid://diyl6tqv427jk" path="res://assets/orb.png" id="1_ktqa0"]
+[ext_resource type="Script" uid="uid://bipeq3t6kpmjj" path="res://scripts/orb.gd" id="1_ubfm6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4cumu"]
+
+[node name="Orb" type="Node2D" unique_id=172375612]
+scale = Vector2(2, 2)
+script = ExtResource("1_ubfm6")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=724896917]
+texture = ExtResource("1_ktqa0")
+
+[node name="Area" type="Area2D" parent="." unique_id=630389639]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area" unique_id=938906803]
+shape = SubResource("CircleShape2D_4cumu")
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

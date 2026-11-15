@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform bool active = false;
+uniform bool active = true;
 
 void fragment() {
 	vec4 previous_color = texture(TEXTURE, UV);

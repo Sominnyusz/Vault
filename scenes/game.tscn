@@ -42,32 +42,38 @@ script = ExtResource("5_p57ef")
 
 [node name="0" type="Marker2D" parent="SpawnPoints" unique_id=1402200794]
 
-[node name="1" type="Marker2D" parent="SpawnPoints" unique_id=1993030596]
-position = Vector2(0, -100)
+[node name="1" type="Marker2D" parent="SpawnPoints" unique_id=2089030157]
+position = Vector2(-300, -100)
 
-[node name="2" type="Marker2D" parent="SpawnPoints" unique_id=2063392353]
-position = Vector2(50, -100)
+[node name="2" type="Marker2D" parent="SpawnPoints" unique_id=176178194]
+position = Vector2(-150, -100)
 
 [node name="3" type="Marker2D" parent="SpawnPoints" unique_id=2137679572]
 position = Vector2(-50, -100)
 
-[node name="4" type="Marker2D" parent="SpawnPoints" unique_id=1359821415]
+[node name="4" type="Marker2D" parent="SpawnPoints" unique_id=1993030596]
+position = Vector2(0, -100)
+
+[node name="5" type="Marker2D" parent="SpawnPoints" unique_id=2063392353]
+position = Vector2(50, -100)
+
+[node name="6" type="Marker2D" parent="SpawnPoints" unique_id=1359821415]
 position = Vector2(150, -100)
-
-[node name="5" type="Marker2D" parent="SpawnPoints" unique_id=176178194]
-position = Vector2(-150, -100)
-
-[node name="6" type="Marker2D" parent="SpawnPoints" unique_id=2089030157]
-position = Vector2(-300, -100)
 
 [node name="7" type="Marker2D" parent="SpawnPoints" unique_id=1706569131]
 position = Vector2(300, -100)
 
-[node name="9" type="Marker2D" parent="SpawnPoints" unique_id=1399669879]
+[node name="8" type="Marker2D" parent="SpawnPoints" unique_id=1399669879]
 position = Vector2(-200, 0)
 
-[node name="10" type="Marker2D" parent="SpawnPoints" unique_id=446701447]
+[node name="9" type="Marker2D" parent="SpawnPoints" unique_id=446701447]
 position = Vector2(250, 0)
+
+[node name="10" type="Marker2D" parent="SpawnPoints" unique_id=1515022039]
+position = Vector2(0, 100)
+
+[node name="11" type="Marker2D" parent="SpawnPoints" unique_id=1981594956]
+position = Vector2(0, 200)
 
 [node name="BounceBoards" type="Node2D" parent="." unique_id=1846433825]
 

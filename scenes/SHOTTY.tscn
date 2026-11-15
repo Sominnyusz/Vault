@@ -131,3 +131,8 @@ autoplay = "default"
 
 [node name="ShellPoint" type="Marker2D" parent="." unique_id=2072671263]
 position = Vector2(39, -5)
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1813656099]
+wait_time = 0.75
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
