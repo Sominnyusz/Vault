@@ -8,7 +8,7 @@ extends Node2D
 var fddgffgfg
 
 func _physics_process(delta: float) -> void:
-	look_at(get_global_mouse_position())
+	rotation = (get_global_mouse_position() - get_parent().position).angle()
 	
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
 	
@@ -23,10 +23,13 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("shoot") and sprite.animation != "shoot":
 		sprite.play("shoot")
 		for i in range(3):
+			
 			var instance = shell.instantiate()
 			instance.rotation_degrees = rotation_degrees + -5 * (i-1)
 			instance.global_position = shellpoint.global_position
 			instance.speed = abs(get_parent().velocity.x) + 722
 			get_tree().root.add_child(instance)
+		
+		get_parent().velocity -= Vector2.from_angle(rotation) * (abs(get_parent().velocity.x) + 422)
 		await sprite.animation_finished
 		sprite.play("default")
