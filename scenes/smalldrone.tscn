@@ -100,7 +100,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cumu"]
 size = Vector2(46, 40)
 
-[node name="Drone" type="Node2D" unique_id=734805235]
+[node name="SmallDrone" type="Node2D" unique_id=734805235]
 script = ExtResource("1_1r4ts")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=675624420]

@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b4xjltsj55d1x" path="res://assets/metalpipe.png" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bdoud5g4prpec" path="res://scenes/bounceboard.tscn" id="3_iywne"]
 [ext_resource type="Script" uid="uid://dnqhicl1umlpu" path="res://scripts/clouds.gd" id="5_p57ef"]
-[ext_resource type="PackedScene" uid="uid://bmypotp3y4k8m" path="res://scenes/drone.tscn" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("2_lnu2h")
@@ -36,6 +35,39 @@ texture = ExtResource("1_yqjtg")
 
 [node name="Clouds" type="Node2D" parent="." unique_id=90864911]
 script = ExtResource("5_p57ef")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1685846114]
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=897418297]
+
+[node name="0" type="Marker2D" parent="SpawnPoints" unique_id=1402200794]
+
+[node name="1" type="Marker2D" parent="SpawnPoints" unique_id=1993030596]
+position = Vector2(0, -100)
+
+[node name="2" type="Marker2D" parent="SpawnPoints" unique_id=2063392353]
+position = Vector2(50, -100)
+
+[node name="3" type="Marker2D" parent="SpawnPoints" unique_id=2137679572]
+position = Vector2(-50, -100)
+
+[node name="4" type="Marker2D" parent="SpawnPoints" unique_id=1359821415]
+position = Vector2(150, -100)
+
+[node name="5" type="Marker2D" parent="SpawnPoints" unique_id=176178194]
+position = Vector2(-150, -100)
+
+[node name="6" type="Marker2D" parent="SpawnPoints" unique_id=2089030157]
+position = Vector2(-300, -100)
+
+[node name="7" type="Marker2D" parent="SpawnPoints" unique_id=1706569131]
+position = Vector2(300, -100)
+
+[node name="9" type="Marker2D" parent="SpawnPoints" unique_id=1399669879]
+position = Vector2(-200, 0)
+
+[node name="10" type="Marker2D" parent="SpawnPoints" unique_id=446701447]
+position = Vector2(250, 0)
 
 [node name="BounceBoards" type="Node2D" parent="." unique_id=1846433825]
 
@@ -135,6 +167,3 @@ shape = SubResource("WorldBoundaryShape2D_4cumu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=8021958]
 zoom = Vector2(2, 2)
-
-[node name="Drone" parent="." unique_id=734805235 instance=ExtResource("7_u5sy4")]
-position = Vector2(-210, -111)
