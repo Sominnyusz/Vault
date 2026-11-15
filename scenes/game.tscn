@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b4xjltsj55d1x" path="res://assets/metalpipe.png" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bdoud5g4prpec" path="res://scenes/bounceboard.tscn" id="3_iywne"]
 [ext_resource type="Script" uid="uid://dnqhicl1umlpu" path="res://scripts/clouds.gd" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bmypotp3y4k8m" path="res://scenes/drone.tscn" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("2_lnu2h")
@@ -134,3 +135,6 @@ shape = SubResource("WorldBoundaryShape2D_4cumu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=8021958]
 zoom = Vector2(2, 2)
+
+[node name="Drone" parent="." unique_id=734805235 instance=ExtResource("7_u5sy4")]
+position = Vector2(-210, -111)

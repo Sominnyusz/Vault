@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var shell = preload("res://scenes/shell.tscn")
-@onready var shells: Node2D = $Shells
 @onready var shellpoint: Marker2D = $ShellPoint
 
 var fddgffgfg
