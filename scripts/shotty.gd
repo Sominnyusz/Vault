@@ -7,6 +7,7 @@ extends Node2D
 
 var chamber: bool = true
 var cooldown: bool = false
+var instance_speed
 
 func _physics_process(delta: float) -> void:
 	if not get_parent().death:
@@ -33,10 +34,11 @@ func _input(event: InputEvent) -> void:
 			var instance = shell.instantiate()
 			instance.rotation_degrees = rotation_degrees + -4 * (i-1)
 			instance.global_position = shellpoint.global_position
-			instance.speed = abs(get_parent().velocity.x) + abs(get_parent().velocity.y)*0.7 + 722
+			instance_speed = abs(get_parent().velocity.x) + abs(get_parent().velocity.y)*0.7 + -get_parent().position.y + 1022
+			instance.speed = instance_speed
 			get_tree().root.add_child(instance)
 		
-		get_parent().velocity -= Vector2.from_angle(rotation) * (abs(get_parent().velocity.x) + 622)
+		get_parent().velocity -= Vector2.from_angle(rotation) * instance_speed / 1.6
 		await sprite.animation_finished
 		sprite.play("default")
 		chamber = true

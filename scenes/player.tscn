@@ -30,7 +30,7 @@ region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0yhus"]
 atlas = ExtResource("3_smehm")
-region = Rect2(0, 0, 54, 33)
+region = Rect2(0, 0, 33, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nubpm"]
 atlas = ExtResource("2_dqkch")
@@ -561,17 +561,87 @@ animations = [{
 "speed": 60.0
 }]
 
+[sub_resource type="Animation" id="Animation_smehm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5707964]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
+_data = {
+&"RESET": SubResource("Animation_smehm"),
+&"death": SubResource("Animation_ur7pv")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1597781540 groups=["player"]]
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=133633137]
+[node name="Area" type="Area2D" parent="." unique_id=2039279526 groups=["player"]]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area" unique_id=133633137]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_4cumu")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=684578022]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=684578022]
 sprite_frames = SubResource("SpriteFrames_4cumu")
 animation = &"Death"
 autoplay = "Idle"
 
 [node name="SHOTTY" parent="." unique_id=1738369162 instance=ExtResource("7_fjrip")]
 position = Vector2(14, 4)
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1882968373]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_4cumu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1527332557]
+libraries/ = SubResource("AnimationLibrary_y4r1p")

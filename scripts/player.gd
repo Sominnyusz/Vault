@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $Sprite
+@onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var SHOTTY: Node2D = $SHOTTY
 @onready var deathscreen = preload("res://scenes/death_screen.tscn")
 
@@ -38,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		if horizontal == 0 and is_on_floor():
 			velocity.x = 0
 			
-		velocity.x *= 0.95
+		velocity.x *= 0 if death else 0.95
 		if abs(velocity.x) < 10:
 			velocity.x = 0
 		
@@ -76,9 +77,13 @@ func getgravity(velocity: Vector2):
 		return gravity
 	return fall_gravity
 	
+func takedamage():
+	lives -= 1
+
 func die():
-	$CollisionShape2D.disabled = true
 	sprite.play("Death")
+	animator.play("death")
+	rotation_degrees = 90
 	var instance = deathscreen.instantiate()
 	instance.global_position = Vector2(0, 0)
 	instance.get_node("kills").text = "Total kills: " + str(get_parent().kills)

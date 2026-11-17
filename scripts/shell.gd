@@ -8,8 +8,10 @@ func _process(delta: float) -> void:
 	else:
 		position += transform.x * speed * delta
 
-
 func _on_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
 		area.get_parent().takedmg(int(speed/20))
 		queue_free()
+		
+func explode():
+	queue_free()

@@ -177,7 +177,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_t8q2s"]
 radius = 38.013157
 
-[node name="BigDrone" type="CharacterBody2D" unique_id=1314568553]
+[node name="BigDrone" type="CharacterBody2D" unique_id=1314568553 groups=["Enemy"]]
 script = ExtResource("1_2kvsy")
 health = 750
 
