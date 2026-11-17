@@ -39,6 +39,7 @@ script = ExtResource("5_p57ef")
 [node name="Enemies" type="Node2D" parent="." unique_id=1685846114]
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=897418297]
+position = Vector2(1, -1)
 
 [node name="0" type="Marker2D" parent="SpawnPoints" unique_id=1402200794]
 

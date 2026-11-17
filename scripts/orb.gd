@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 400
+var speed = randi_range(250, 375)
 
 func _process(delta: float) -> void:
 	position += Vector2.from_angle(rotation) * speed * delta

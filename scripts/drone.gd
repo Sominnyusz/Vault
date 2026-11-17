@@ -12,18 +12,21 @@ var speed: int = 350
 var move: bool = false
 var direction
 var player
+var attacking = true  
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+
+
+func _process(delta: float) -> void:
 	attackloop()
-
-
-func attackloop() -> void:
-	while not player.death:
+	
+func attackloop():
+	if not player.death and attacking:
+		attacking = false
 		sprite.play("default")
 		await get_tree().create_timer(randf_range(3, 5)).timeout
-		if player.death:
-			break
+		
 		sprite.play("attack_launch")
 		await get_tree().create_timer(randf_range(0.4, 1)).timeout
 	
@@ -33,11 +36,13 @@ func attackloop() -> void:
 		await get_tree().create_timer(randf_range(0.4, 0.8)).timeout
 		move = false
 		rotation = 0
-	
+		
+		
 		spawn_orbs(3)
-	
-	
-		attackloop()
+		
+		sprite.play("default")
+		await get_tree().create_timer(randf_range(3, 5)).timeout
+		attacking = true
 
 func spawn_orbs(orbcount):
 	for i in range(orbcount):
@@ -58,16 +63,12 @@ func takedmg(dmg: int):
 	if health <= 0:
 		indicatorfunc("+1 Kill", true)
 		animation.play("death")
-		dead = true
+		die()
 		
 	else:
 		animation.play("hurt")
 	await get_tree().create_timer(1).timeout
 	animation.play("RESET")
-	
-	if health <= 0:
-		get_parent().get_parent().kills += 1
-		queue_free()
 
 func indicatorfunc(text, special):
 	if not dead:
@@ -77,5 +78,13 @@ func indicatorfunc(text, special):
 		if special:
 			instance.get_child(0).modulate = Color(0.874, 0.718, 0.0, 1.0)
 			instance.scale = Vector2(1.4, 1.4)
-		
+			
 		get_tree().root.add_child(instance)
+
+func die():
+	if not dead:
+		dead = true
+		get_parent().get_parent().kills += 1
+		await get_tree().create_timer(1).timeout
+		queue_free()
+		print("dead")
