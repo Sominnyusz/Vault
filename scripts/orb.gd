@@ -21,9 +21,7 @@ func _on_area_area_entered(area: Area2D) -> void:
 		
 	if impact and area.is_in_group("projectile"):
 		var orb = area.get_parent()
-		print(orb)
 		orb = orb.get_parent()
-		print(orb)
 		orb.impact = true
 		orb.animator.play("explode")
 		
