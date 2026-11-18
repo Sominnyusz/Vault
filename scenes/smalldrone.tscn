@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://21lhkqm3k4a0" path="res://assets/drone.gdshader" id="1_knnud"]
 [ext_resource type="Texture2D" uid="uid://bfrya5xwg5jqk" path="res://assets/smalldrone.png" id="3_kv6y5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1r4ts"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kv6y5"]
 resource_local_to_scene = true
 shader = ExtResource("1_knnud")
 shader_parameter/active = false
@@ -158,7 +158,7 @@ script = ExtResource("1_1r4ts")
 health = 300
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=675624420]
-material = SubResource("ShaderMaterial_1r4ts")
+material = SubResource("ShaderMaterial_kv6y5")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4cumu")
 animation = &"attack_launch"

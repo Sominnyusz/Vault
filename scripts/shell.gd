@@ -12,6 +12,11 @@ func _on_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
 		area.get_parent().takedmg(int(speed/20))
 		queue_free()
+	if area.is_in_group("projectile"):
+		explode()
+		var orb = area.get_parent().get_parent()
+		orb.impact = true
+		orb.animator.play("explode")
 		
 func explode():
 	queue_free()

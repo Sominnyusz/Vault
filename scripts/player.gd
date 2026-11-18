@@ -17,6 +17,10 @@ var jumps_made: int = 0
 var player_state: String = "Idle"
 var lives: int = 3
 var death: bool = false
+var vulnerable: bool = true
+
+func _ready() -> void:
+	animator.play("RESET")
 
 func _physics_process(delta: float) -> void:
 	velocity.y += getgravity(velocity) * delta
@@ -77,8 +81,15 @@ func getgravity(velocity: Vector2):
 		return gravity
 	return fall_gravity
 	
-func takedamage():
-	lives -= 1
+func takedmg():
+	if vulnerable:
+		vulnerable = false
+		animator.play("hit")
+		lives -= 1
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	vulnerable = true
 
 func die():
 	sprite.play("Death")
