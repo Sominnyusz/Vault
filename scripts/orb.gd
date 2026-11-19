@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var animator: AnimationPlayer = $Sprite/AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite
+@onready var orb_explode_texture = preload("res://assets/orb_explode.png")
 
 var speed = randi_range(250, 375)
 var impact = false
@@ -22,8 +24,12 @@ func _on_area_area_entered(area: Area2D) -> void:
 	if impact and area.is_in_group("projectile"):
 		var orb = area.get_parent()
 		orb = orb.get_parent()
-		orb.impact = true
-		orb.animator.play("explode")
+		orb.explodefunc()
+
+func explodefunc():
+	impact = true
+	sprite.texture = orb_explode_texture
+	animator.play("explode")
 		
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	queue_free()

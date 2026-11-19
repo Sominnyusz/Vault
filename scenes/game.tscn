@@ -174,3 +174,33 @@ shape = SubResource("WorldBoundaryShape2D_4cumu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=8021958]
 zoom = Vector2(2, 2)
+
+[node name="Bordering" type="Node2D" parent="." unique_id=904227501]
+
+[node name="ColorRect2" type="ColorRect" parent="Bordering" unique_id=1414855957]
+offset_left = -480.0
+offset_top = -475.0
+offset_right = 480.0
+offset_bottom = -269.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Bordering" unique_id=47917965]
+offset_left = -774.0
+offset_top = -475.0
+offset_right = -480.0
+offset_bottom = 478.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Bordering" unique_id=953696782]
+offset_left = -480.0
+offset_top = 272.0
+offset_right = 480.0
+offset_bottom = 478.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Bordering" unique_id=1663185815]
+offset_left = 480.0
+offset_top = -475.0
+offset_right = 774.0
+offset_bottom = 478.0
+color = Color(0, 0, 0, 1)
