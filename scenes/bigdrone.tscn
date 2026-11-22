@@ -78,7 +78,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_v07g1")
 }],
 "loop": 0,
-"name": &"attack_launch",
+"name": &"attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -185,7 +185,7 @@ health = 750
 material = SubResource("ShaderMaterial_o6t3k")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4cumu")
-animation = &"attack_launch"
+animation = &"attack"
 autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=2070834784]

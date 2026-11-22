@@ -28,7 +28,6 @@ func spawnwave():
 				instance = small.instantiate()
 			"big":
 				instance = big.instantiate()
-		print(layouts[layout][0][i], layouts[layout][1][i])
 		instance.global_position = spawn_points.get_child(layouts[layout][1][i]).global_position
 		get_node("Enemies").add_child(instance)
 	

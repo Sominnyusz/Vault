@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfrya5xwg5jqk"
-path="res://.godot/imported/smalldrone.png-f0c47b647e412a822e21d3e0df23b41a.ctex"
+uid="uid://b2t8wvx7iikvb"
+path="res://.godot/imported/smalldrone_idle.png-6babbbc2c9b02fdb0fcf985a362c26fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/smalldrone.png"
-dest_files=["res://.godot/imported/smalldrone.png-f0c47b647e412a822e21d3e0df23b41a.ctex"]
+source_file="res://assets/smalldrone_idle.png"
+dest_files=["res://.godot/imported/smalldrone_idle.png-6babbbc2c9b02fdb0fcf985a362c26fc.ctex"]
 
 [params]
 
