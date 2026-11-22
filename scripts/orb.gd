@@ -5,7 +5,7 @@ extends Node2D
 @onready var orb_explode_texture = preload("res://assets/orb_explode.png")
 @onready var selfarea: Area2D = $Sprite/Area
 
-var speed = randi_range(250, 375)
+var speed
 var impact = false
 
 func _process(delta: float) -> void:

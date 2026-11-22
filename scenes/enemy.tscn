@@ -1,73 +1,74 @@
 [gd_scene format=3 uid="uid://bmypotp3y4k8m"]
 
-[ext_resource type="Script" uid="uid://c00jgtopei5k4" path="res://scripts/drone.gd" id="1_1r4ts"]
-[ext_resource type="Shader" uid="uid://21lhkqm3k4a0" path="res://assets/drone.gdshader" id="1_knnud"]
-[ext_resource type="Texture2D" uid="uid://64g3kphmqr5u" path="res://assets/smalldrone_attack.png" id="3_7a8dp"]
-[ext_resource type="Texture2D" uid="uid://b2t8wvx7iikvb" path="res://assets/smalldrone_idle.png" id="3_kv6y5"]
+[ext_resource type="Script" uid="uid://c00jgtopei5k4" path="res://scripts/drone.gd" id="1_5uy6h"]
+[ext_resource type="Shader" uid="uid://21lhkqm3k4a0" path="res://assets/drone.gdshader" id="2_c4w8v"]
+[ext_resource type="Texture2D" uid="uid://64g3kphmqr5u" path="res://assets/smalldrone_attack.png" id="3_xwavj"]
+[ext_resource type="Texture2D" uid="uid://b2t8wvx7iikvb" path="res://assets/smalldrone_idle.png" id="4_nenq2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kv6y5"]
 resource_local_to_scene = true
-shader = ExtResource("1_knnud")
+shader = ExtResource("2_c4w8v")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6eadv"]
-atlas = ExtResource("3_7a8dp")
+atlas = ExtResource("3_xwavj")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpu3y"]
-atlas = ExtResource("3_7a8dp")
+atlas = ExtResource("3_xwavj")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thtmo"]
-atlas = ExtResource("3_7a8dp")
+atlas = ExtResource("3_xwavj")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8fgp"]
-atlas = ExtResource("3_7a8dp")
+atlas = ExtResource("3_xwavj")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oo7oy"]
-atlas = ExtResource("3_7a8dp")
+atlas = ExtResource("3_xwavj")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7a8dp"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iepbp"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hbh1"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fge1"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jciu7"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylib4"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3vak"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5g8k"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmpwk"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4p30f"]
-atlas = ExtResource("3_kv6y5")
+atlas = ExtResource("4_nenq2")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4cumu"]
@@ -163,22 +164,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/path = NodePath("Sprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -263,9 +252,11 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_t8q2s"]
 radius = 33.0
 
-[node name="SmallDrone" type="Node2D" unique_id=734805235]
-script = ExtResource("1_1r4ts")
+[node name="Enemy" type="Node2D" unique_id=734805235]
+script = ExtResource("1_5uy6h")
 health = 300
+orb_count = 3
+speed = 300
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=675624420]
 material = SubResource("ShaderMaterial_kv6y5")
@@ -281,4 +272,5 @@ libraries/ = SubResource("AnimationLibrary_k1p8w")
 [node name="Area" type="Area2D" parent="." unique_id=936666814 groups=["Enemy"]]
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area" unique_id=1253602462]
+visible = false
 shape = SubResource("CircleShape2D_t8q2s")

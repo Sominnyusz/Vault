@@ -7,16 +7,19 @@ extends Node2D
 @onready var hitbox: CollisionShape2D = $Area/Hitbox
 
 @export var health: int
+@export var orb_count: int
+@export var orb_speed: int
 
 var dead: bool = false
-var speed: int = 350
 var move: bool = false
 var direction
 var player
+var game
 var attacking = true  
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	game = get_parent().get_parent()
 
 
 func _process(delta: float) -> void:
@@ -45,12 +48,13 @@ func attackloop():
 		rotation = 0
 		
 		if not dead:
-			spawn_orbs(3)
+			spawn_orbs(orb_count)
 		
 		sprite.play("default")
 		sprite.flip_h = false
 		await get_tree().create_timer(randf_range(3, 5)).timeout
 		attacking = true
+
 
 func spawn_orbs(orbcount):
 	for i in range(orbcount):
@@ -58,13 +62,12 @@ func spawn_orbs(orbcount):
 		instance.global_position = global_position
 		instance.look_at(player.global_position)
 		instance.rotation += randf_range(-0.2, 0.2)
+		instance.speed = orb_speed + randi_range(-25, 25) + game.kills
 		
 		get_tree().current_scene.add_child(instance)
 		await get_tree().create_timer(0.15).timeout
 
 func takedmg(dmg: int):
-	
-	
 	health -= dmg
 	
 	indicatorfunc("-" + str(dmg), false)
@@ -79,6 +82,7 @@ func takedmg(dmg: int):
 	if not dead:
 		animation.play("RESET")
 
+
 func indicatorfunc(text, special):
 	if not dead:
 		var instance = indicator.instantiate()
@@ -90,12 +94,13 @@ func indicatorfunc(text, special):
 			
 		get_tree().root.add_child(instance)
 
+
 func die():
 	if not dead:
 		animation.stop()
 		animation.play("death")
 		hitbox.disabled = true
 		dead = true
-		get_parent().get_parent().kills += 1
+		game.kill()
 		await get_tree().create_timer(1).timeout
 		queue_free()

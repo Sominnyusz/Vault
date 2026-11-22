@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var SHOTTY: Node2D = $SHOTTY
 @onready var deathscreen = preload("res://scenes/death_screen.tscn")
+@onready var hitbox: CollisionShape2D = $Area/Hitbox
 
 @export var speed: int = 250
 @export var acceleration: int = 100
@@ -18,9 +19,11 @@ var player_state: String = "Idle"
 var lives: int = 3
 var death: bool = false
 var vulnerable: bool = true
+var game
 
 func _ready() -> void:
 	animator.play("RESET")
+	game = get_parent()
 
 func _physics_process(delta: float) -> void:
 	velocity.y += getgravity(velocity) * delta
@@ -84,16 +87,20 @@ func getgravity(velocity: Vector2):
 func takedmg():
 	if vulnerable:
 		vulnerable = false
-		animator.play("hit")
+		animator.play("Hit")
 		lives -= 1
+		game.player_damage()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	vulnerable = true
+	if anim_name == "Death":
+		hitbox.disabled = true
+	else:
+		vulnerable = true
 
 func die():
 	sprite.play("Death")
-	animator.play("death")
+	animator.play("Death")
 	rotation_degrees = 90
 	var instance = deathscreen.instantiate()
 	instance.global_position = Vector2(0, 0)

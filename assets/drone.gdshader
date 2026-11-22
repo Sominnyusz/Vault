@@ -1,14 +1,18 @@
 shader_type canvas_item;
 
+uniform vec3 flash_color : source_color = vec3(1.0, 1.0, 1.0);
 uniform bool active = false;
 
 void fragment() {
-	vec4 tex_color = texture(TEXTURE, UV);
+	vec4 original_color = texture(TEXTURE, UV);
 	
-	// If active is true, show pure white. If false, show the normal texture colors.
-	vec3 final_rgb = active ? vec3(1.0) : tex_color.rgb;
-	
-	// Combine the RGB with the texture's alpha, and multiply by COLOR.a 
-	// so your fade-out animation (transparency) still works!
-	COLOR = vec4(final_rgb, tex_color.a * COLOR.a);
+	if (active) {
+		// FLASH
+		COLOR = vec4(flash_color, original_color.a * COLOR.a);
+	} else {
+		// NORMAL
+		vec4 final_color = original_color * COLOR;
+		final_color.rgb = pow(final_color.rgb, vec3(1.0 / 2.2));
+		COLOR = final_color;
+	}
 }

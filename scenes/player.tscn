@@ -12,6 +12,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ur7pv"]
 shader = ExtResource("2_ur7pv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/active = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cumu"]
@@ -19,7 +20,8 @@ size = Vector2(20, 58)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ubfm6"]
 shader = ExtResource("2_ur7pv")
-shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/active = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2w11d"]
 atlas = ExtResource("2_tuyoq")
@@ -570,47 +572,8 @@ animations = [{
 "speed": 60.0
 }]
 
-[sub_resource type="Animation" id="Animation_smehm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite:material:shader_parameter/active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.001),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_ur7pv"]
-resource_name = "death"
+resource_name = "Death"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -650,7 +613,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_y4r1p"]
-resource_name = "hit"
+resource_name = "Hit"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -664,11 +627,50 @@ tracks/0/keys = {
 "values": [true, false, true, false, true, false, true, false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_smehm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
 _data = {
-&"RESET": SubResource("Animation_smehm"),
-&"death": SubResource("Animation_ur7pv"),
-&"hit": SubResource("Animation_y4r1p")
+&"Death": SubResource("Animation_ur7pv"),
+&"Hit": SubResource("Animation_y4r1p"),
+&"RESET": SubResource("Animation_smehm")
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1597781540 groups=["player"]]
