@@ -3,7 +3,7 @@ extends Node2D
 @onready var spawn_points: Node2D = $SpawnPoints
 @onready var enemy = preload("res://scenes/enemy.tscn")
 @onready var killslabel: Label = $GameUI/Kills
-@onready var liveslabel: Label = $GameUI/Lives
+@onready var healthbar: Control = $GameUI/HealthBar
 var player
 
 var kills: int = 0
@@ -31,23 +31,24 @@ func spawnwave():
 		instance = enemy.instantiate()
 		match layouts[layout][0][i]:
 			"normal":
+				instance.type = "Normal"
 				instance.health = 300
 				instance.orb_count = 3
 				instance.orb_speed = 300
 			"big":
+				instance.type = "Big"
 				instance.health = 750
 				instance.orb_count = 4
 				instance.orb_speed = 250
 				
 				instance.scale = Vector2(1.5, 1.5)
-				instance.modulate = Color("ffff89ff")
 		
 		instance.global_position = spawn_points.get_child(layouts[layout][1][i]).global_position
 		get_node("Enemies").add_child(instance)
 
 
 func player_damage():
-	liveslabel.text = "Lives: " + str(player.lives)
+	healthbar.damage(player.lives)
 
 
 func kill():

@@ -6,6 +6,7 @@ extends Node2D
 @onready var orb = preload("res://scenes/orb.tscn")
 @onready var hitbox: CollisionShape2D = $Area/Hitbox
 
+@export var type: String
 @export var health: int
 @export var orb_count: int
 @export var orb_speed: int
@@ -28,10 +29,10 @@ func _process(delta: float) -> void:
 func attackloop():
 	if not player.death and attacking:
 		attacking = false
-		sprite.play("default")
+		sprite.play(type.to_lower() + "default")
 		await get_tree().create_timer(randf_range(3, 5)).timeout
 		
-		sprite.play("attack")
+		sprite.play(type.to_lower() + "attack")
 		await get_tree().create_timer(randf_range(0.4, 1)).timeout
 		
 		
@@ -50,7 +51,7 @@ func attackloop():
 		if not dead:
 			spawn_orbs(orb_count)
 		
-		sprite.play("default")
+		sprite.play(type.to_lower() + "default")
 		sprite.flip_h = false
 		await get_tree().create_timer(randf_range(3, 5)).timeout
 		attacking = true

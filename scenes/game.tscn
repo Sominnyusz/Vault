@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bdoud5g4prpec" path="res://scenes/bounceboard.tscn" id="3_iywne"]
 [ext_resource type="Script" uid="uid://dnqhicl1umlpu" path="res://scripts/clouds.gd" id="5_p57ef"]
 [ext_resource type="FontFile" uid="uid://b02aqbl1bnjyc" path="res://assets/PixelOperator8-Bold.ttf" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://48vreyi4ud7i" path="res://scripts/healthbar.gd" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://qo14vpvhtuw" path="res://scenes/heart.tscn" id="9_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("2_lnu2h")
@@ -214,22 +216,34 @@ anchors_preset = 0
 offset_left = -480.0
 offset_top = 208.0
 offset_right = 480.0
-offset_bottom = 278.0
+offset_bottom = 270.0
 
 [node name="Kills" type="Label" parent="GameUI" unique_id=1281815072]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 5.0
+offset_top = 22.0
 offset_right = 111.0
-offset_bottom = 28.0
+offset_bottom = 38.0
 theme_override_fonts/font = ExtResource("7_u5sy4")
 text = "Kills: 0"
 
-[node name="Lives" type="Label" parent="GameUI" unique_id=60533876]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 32.0
-offset_right = 119.0
-offset_bottom = 55.0
-theme_override_fonts/font = ExtResource("7_u5sy4")
-text = "Lives: 3"
+[node name="HealthBar" type="Control" parent="GameUI" unique_id=1100488794]
+anchors_preset = 0
+offset_left = 152.0
+offset_top = 10.0
+offset_right = 292.0
+offset_bottom = 50.0
+script = ExtResource("8_0tnpc")
+
+[node name="Heart1" parent="GameUI/HealthBar" unique_id=1006156322 instance=ExtResource("9_0tnpc")]
+layout_mode = 1
+
+[node name="Heart2" parent="GameUI/HealthBar" unique_id=1447341750 instance=ExtResource("9_0tnpc")]
+layout_mode = 1
+offset_left = 50.0
+offset_right = 50.0
+
+[node name="Heart3" parent="GameUI/HealthBar" unique_id=1469323969 instance=ExtResource("9_0tnpc")]
+layout_mode = 1
+offset_left = 100.0
+offset_right = 100.0
