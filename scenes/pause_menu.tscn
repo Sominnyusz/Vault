@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cmbf2oofhnjbb"]
+
+[ext_resource type="FontFile" uid="uid://b02aqbl1bnjyc" path="res://assets/PixelOperator8-Bold.ttf" id="1_n87rw"]
+
+[node name="PauseMenu" type="Control" unique_id=1052113636]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=635844019]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 216.0
+offset_right = 649.0
+offset_bottom = 277.0
+theme_override_fonts/font = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 60
+text = "paused"

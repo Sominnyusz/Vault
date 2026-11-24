@@ -6,5 +6,6 @@ extends Control
 func damage(lives):
 	var heart = get_child(lives).get_child(0)
 	heart.get_child(0).play("break")
-	await get_tree().create_timer(0.3).timeout
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+	await tween.tween_interval(0.3).finished
 	heart.texture = brokenheart

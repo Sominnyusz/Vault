@@ -7,13 +7,14 @@ extends Node2D
 var player
 
 var kills: int = 0
+var pause: bool = false
 
 var layouts = [
 	[["normal", "normal", "normal"], [2, 4, 6]],
 	[["normal", "big", "normal"], [1, 4, 7]],
 	[["normal", "normal", "normal", "normal"], [1, 2, 6, 7]],
-	[["normal", "normal", "normal", "normal"], [1, 7, 8, 9]],
-	[["normal", "normal", "big", "normal", "normal"], [1, 7, 4, 8, 9]]
+	[["normal", "normal", "small", "small"], [1, 7, 8, 9]],
+	[["normal", "normal", "big", "small", "small"], [1, 7, 4, 8, 9]]
 ]
 
 func _ready() -> void:
@@ -22,7 +23,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not get_node("Enemies").get_children():
 		spawnwave()
-		await get_tree().create_timer(1).timeout
+		var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+		await tween.tween_interval(1.0).finished
 
 func spawnwave():
 	var layout = randi_range(0, len(layouts) - 1)
@@ -35,12 +37,18 @@ func spawnwave():
 				instance.health = 300
 				instance.orb_count = 3
 				instance.orb_speed = 300
+				instance.scale = Vector2(1, 1)
+			"small":
+				instance.type = "Small"
+				instance.health = 200
+				instance.orb_count = 2
+				instance.orb_speed = 350
+				instance.scale = Vector2(0.75, 0.75)
 			"big":
 				instance.type = "Big"
 				instance.health = 750
 				instance.orb_count = 4
 				instance.orb_speed = 250
-				
 				instance.scale = Vector2(1.5, 1.5)
 		
 		instance.global_position = spawn_points.get_child(layouts[layout][1][i]).global_position

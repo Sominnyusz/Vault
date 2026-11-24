@@ -30,10 +30,12 @@ func attackloop():
 	if not player.death and attacking:
 		attacking = false
 		sprite.play(type.to_lower() + "default")
-		await get_tree().create_timer(randf_range(3, 5)).timeout
+		var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+		await tween.tween_interval(randf_range(3, 5)).finished
 		
 		sprite.play(type.to_lower() + "attack")
-		await get_tree().create_timer(randf_range(0.4, 1)).timeout
+		var tween2 = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+		await tween2.tween_interval(randf_range(0.4, 1)).finished
 		
 		
 		rotate(get_angle_to(player.global_position))
@@ -44,7 +46,8 @@ func attackloop():
 		rotation_degrees /= 5
 	
 		move = true
-		await get_tree().create_timer(randf_range(0.4, 0.8)).timeout
+		var tween3 = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+		await tween3.tween_interval(randf_range(0.4, 0.8)).finished
 		move = false
 		rotation = 0
 		
@@ -53,7 +56,8 @@ func attackloop():
 		
 		sprite.play(type.to_lower() + "default")
 		sprite.flip_h = false
-		await get_tree().create_timer(randf_range(3, 5)).timeout
+		var tween4 = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+		await tween4.tween_interval(randf_range(3, 5)).finished
 		attacking = true
 
 
@@ -66,7 +70,8 @@ func spawn_orbs(orbcount):
 		instance.speed = orb_speed + randi_range(-25, 25) + game.kills
 		
 		get_tree().current_scene.add_child(instance)
-		await get_tree().create_timer(0.15).timeout
+		var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+		await tween.tween_interval(0.15).finished
 
 func takedmg(dmg: int):
 	health -= dmg
@@ -79,7 +84,8 @@ func takedmg(dmg: int):
 		
 	else:
 		animation.play("hurt")
-	await get_tree().create_timer(0.6).timeout
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+	await tween.tween_interval(0.6).finished
 	if not dead:
 		animation.play("RESET")
 
@@ -103,5 +109,6 @@ func die():
 		hitbox.disabled = true
 		dead = true
 		game.kill()
-		await get_tree().create_timer(1).timeout
+		var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+		await tween.tween_interval(1).finished
 		queue_free()

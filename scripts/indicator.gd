@@ -4,5 +4,6 @@ extends Node2D
 
 func _ready() -> void:
 	animation_player.play("indicator")
-	await get_tree().create_timer(1).timeout
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_BOUND)
+	await tween.tween_interval(1.0).finished
 	queue_free()

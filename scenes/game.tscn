@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://b02aqbl1bnjyc" path="res://assets/PixelOperator8-Bold.ttf" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://48vreyi4ud7i" path="res://scripts/healthbar.gd" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://qo14vpvhtuw" path="res://scenes/heart.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://cmbf2oofhnjbb" path="res://scenes/pause_menu.tscn" id="10_vtaks"]
+[ext_resource type="Script" uid="uid://dcmrfu3qnrcqx" path="res://scripts/pause.gd" id="11_kvpfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("2_lnu2h")
@@ -247,3 +249,12 @@ offset_right = 50.0
 layout_mode = 1
 offset_left = 100.0
 offset_right = 100.0
+
+[node name="PauseMenu" parent="." unique_id=1052113636 instance=ExtResource("10_vtaks")]
+process_mode = 3
+visible = false
+offset_left = -480.0
+offset_top = -270.0
+offset_right = -480.0
+offset_bottom = -270.0
+script = ExtResource("11_kvpfn")
